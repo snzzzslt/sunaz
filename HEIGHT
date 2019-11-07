@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+/* This game was written by Zahra Soltani 31 Octobre 2019
+it's about guessing height in 3 tries.
+*/
+
+int main()
+{
+    //initial and decolarations
+   int upper=200;
+    int lower=100;
+    int random_height;
+    int ans; //input that get answer
+    srand ( time(NULL) ); // it's used for making random number
+    int guess=0;
+
+random_height = (rand() % (upper-lower)) + lower; // formule to make random numbers between 2 limits.
+while(guess<3 ){
+        do{
+        if(guess<2){
+
+     printf("your heigh is %d??\n if it's too high press 1\n if it's too low press 2\n if it's correct press 3\n  ",random_height);
+     scanf("%d",&ans);
+        }
+        else{
+            printf("we hope %d is close to your height \n This game can only make 3 guess :) Bye",random_height);
+            exit(0);
+        }
+        }while(ans>3);
+
+guess++;
+// we will check if guess is over 3 the game will finish and if not add 1 to guess and continue game
+
+
+     switch(ans){
+
+     case 1:{
+      upper=random_height;
+      random_height = rand() % (upper-lower) + lower;
+     }
+
+     case 2:{
+         lower=random_height;
+          random_height = rand()%(upper-lower)+ lower;
+           break;
+            }
+
+
+
+    case 3:{
+        printf("Done!");
+          exit(0);
+         break;
+     }
+
+
+
+     default:{
+          printf("Invalid input,try again\n");
+          guess--;
+     }
+
+
+
+
+     }
+     //check that input from user goes to which situation and if it was somthing else than 1,2,3 print invalid and to not count it as guess we minos 1 from guess
+}
+
+
+
+
+}
+
